@@ -45,5 +45,3 @@ The project is at the planning and literature-gathering stage. An initial list o
 6. Run repeated comparisons across models and permission configurations.
 7. Analyse security outcomes alongside task completion and document limitations.
 
-Only fictional test data and non-secret project materials should be included here. API keys belong outside the repository.
-
