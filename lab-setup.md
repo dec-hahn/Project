@@ -43,8 +43,6 @@ Host: Windows 11 using VMware (exact product/version to be recorded). Allocation
 
 ## Decisions still required
 
-- Exact VMware product/version (host Windows 11 and VMware selected).
-- Available Windows licences and project duration; evaluation expiry must not interrupt the study.
 - Framework, exact model versions and API credential handling.
 - Task-specific permission provisioning and revocation mechanism.
 - Windows audit forwarding/collection implementation and retention period.
