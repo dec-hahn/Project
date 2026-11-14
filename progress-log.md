@@ -1,10 +1,14 @@
 # Progress Log
 
-## Status reviewed on 14 November 2026
+## 14 November 2026 — Lab bring-up and initial checks
 
-The repository records research planning and lab design. The October milestones below describe the work completed to date. The [lab plan](lab-setup.md) defines the build sequence and pilot acceptance checks. The [source index](resources/sources/README.md) holds 27 references for literature review.
+- Confirmed AGENT01 can reach CTRL01 over the private lab network.
+- Tested an authenticated OpenAI request directly from CTRL01 using `gpt-5-nano` and a fixed prompt. The endpoint returned HTTP 200 and the reply `OK`. This model was used for connectivity testing.
+- Tested the end-to-end relay from AGENT01 through CTRL01 to OpenAI. AGENT01 received HTTP 200 and `OK`, with the API key supplied on CTRL01.
+- Created the Finance and HR test content on FS01, including a fictional HR payroll file. The Finance role test account could read the assigned Finance report and was denied access to HR.
+- Next, add a second fictional Finance report. Verify that the Finance role account can read both reports and that the task-specific account can read only the assigned one. Then validate audit event collection and correlation before the first comparative pilot.
 
-Open decisions include the exact model versions and shared agent framework, the task and permission manifests, repetition counts, and the Windows audit collection method. The next lab milestone is provisioning the isolated network and domain controller after recording the VMware version and confirming licensing. Deployment, pilot runs and experimental results have yet to be recorded.
+The checks above were reported during lab setup. Comparative trial results are pending.
 
 ## 2 November 2026 — Lab plan updated on GitHub
 
