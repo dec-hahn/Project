@@ -1,38 +1,32 @@
-# Progress Log
+# My project progress
 
-## 14 November 2026 — Lab bring-up and initial checks
+## 14 November 2026
 
-- Confirmed AGENT01 can reach CTRL01 over the private lab network.
-- Tested an authenticated OpenAI request directly from CTRL01 using `gpt-5-nano` and a fixed prompt. The endpoint returned HTTP 200 and the reply `OK`. This model was used for connectivity testing.
-- Tested the end-to-end relay from AGENT01 through CTRL01 to OpenAI. AGENT01 received HTTP 200 and `OK`, with the API key supplied on CTRL01.
-- Created the Finance and HR test content on FS01, including a fictional HR payroll file. The Finance role test account could read the assigned Finance report and was denied access to HR.
-- Next, add a second fictional Finance report. Verify that the Finance role account can read both reports and that the task-specific account can read only the assigned one. Then validate audit event collection and correlation before the first comparative pilot.
+I checked that AGENT01 could reach CTRL01 over the private lab network. Then I tested a direct OpenAI API call from CTRL01 using `gpt-5-nano`. I got HTTP 200 and the reply `OK`. I also tested the relay from AGENT01 through CTRL01 and got the same response back on AGENT01. I entered the API key on CTRL01 for the test.
 
-The checks above were reported during lab setup. Comparative trial results are pending.
+On FS01, I set up the Finance and HR test files, including a fictional payroll file. I signed in with the Finance test account and confirmed I could read the assigned Finance report. I also tried accessing HR with the same account and confirmed access was denied.
 
-## 2 November 2026 — Lab plan updated on GitHub
+My next step is to add a second Finance report. I want to check that the Finance account can open both reports and that the task-specific account can only open the assigned one. After that I need to check that the audit logs capture the allowed and denied actions before I run the first comparison.
 
-- Updated the [four-VM lab plan](lab-setup.md), which records machine roles and sizing, effective SMB and NTFS permissions, audit checks, trial reset procedures and outstanding implementation decisions. See the [repository revision](https://github.com/dec-hahn/Project/commit/c186996ffa06f9a389c12eab3409648163bb224f).
+## 2 November 2026
 
-## 30 October 2026 — Four-VM lab architecture agreed
+I updated the [lab setup notes](lab-setup.md) with how I plan to set up the file permissions, check the audit logs and reset the lab between runs. I also wrote down the decisions I still need to make, including which agent framework and model versions to use and how many times to repeat each task.
 
-- Selected a Windows domain controller, Windows file server, Windows agent workstation and Ubuntu experiment controller/log collector.
-- Replaced the original single-Linux-VM plan with an AD-managed company file environment.
-- Recorded machine sizing, security boundaries, build order and pilot acceptance checks in lab-setup.md.
-- Confirmed Windows 11 as the host operating system and VMware as the virtualisation platform; the exact VMware product/version remains to be recorded.
-- Revised initial allocations for sequential, API-based trials: DC01 and FS01 each receive 2 vCPU and 2 GB RAM; AGENT01 receives 2 vCPU and 4 GB RAM; CTRL01 receives 2 vCPU and 2 GB RAM.
-- Planned virtual disks: DC01 60 GB; FS01 60 GB OS plus 40 GB data; AGENT01 80 GB; CTRL01 60 GB. Total guest allocation: 8 vCPU, 10 GB RAM and 300 GB virtual disk capacity, excluding snapshots and backups.
-- These are lean starting allocations. Pilot runs will check memory pressure, timeouts and logging reliability before resources are fixed across experimental conditions.
-- Deployment has not started. Next: record the VMware version, confirm Windows licensing, then provision the isolated network and DC01.
+## 30 October 2026
 
-## 19 October 2026 — Research documentation prepared
+I settled on a four-VM lab on my Windows 11 host using VMware. I moved on from the original single Linux VM idea because I wanted the lab to work like a company file network managed through Active Directory.
 
-- Recovered the project plan from earlier planning discussions.
-- Documented the proposed comparison of OpenAI-, Claude-, and Gemini-powered agents.
-- Documented broad-access, role-based, and task-specific permission configurations.
-- Prepared an initial list of 27 related research sources with brief descriptions.
-- Prepared a project overview and progress log for sharing with the teacher on GitHub.
+| VM | What I plan to use it for | Starting allocation |
+| --- | --- | --- |
+| DC01 | Windows domain controller for users and groups | 2 vCPU, 2 GB RAM, 60 GB disk |
+| FS01 | Windows file server for the fictional department files | 2 vCPU, 2 GB RAM, 60 GB OS disk plus 40 GB data disk |
+| AGENT01 | Windows workstation for running the agents | 2 vCPU, 4 GB RAM, 80 GB disk |
+| CTRL01 | Ubuntu server for coordinating tests and collecting logs | 2 vCPU, 2 GB RAM, 60 GB disk |
 
-Current stage: planning and literature review. No experimental results have been recorded yet.
+I planned for 8 vCPU, 10 GB of guest RAM and 300 GB of virtual disk space in total, before snapshots and backups. I kept the starting allocations low because I plan to run the tests one at a time and use model APIs. I’ll check memory use, timeouts and logging during the pilot. At this point I still needed to record the exact VMware version and confirm Windows licensing.
 
-Next: review priority papers, select exact model versions, and begin the test-environment prototype.
+## 19 October 2026
+
+I pulled together my project idea and wrote out how I want to compare agents using OpenAI, Claude and Gemini. I want to see how they behave with broad file access, access based on their department and access limited to the task they’ve been given.
+
+I collected [27 sources](resources/sources/README.md) and added a short description for each one so I could decide which to read first. I also prepared the project overview and progress log to share on GitHub.
