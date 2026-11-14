@@ -8,7 +8,7 @@ Investigate whether least-privilege controls reduce unnecessary or unintended ac
 
 Compare agents powered by models from OpenAI, Anthropic (Claude), and Google (Gemini) using one shared agent framework. Exact model versions have not yet been selected.
 
-Each agent will receive the same tools and repeatable tasks inside a controlled Linux virtual machine containing fictional company documents. Tools will support controlled file operations, and the framework will log requested actions and permission decisions.
+Each agent will receive the same tools and repeatable tasks in an isolated, four-VM Active Directory lab containing fictional company documents. A domain-joined Windows workstation will run the agents, a Windows SMB file server will enforce access, and an Ubuntu controller will coordinate trials and collect logs. A Windows domain controller will manage trial identities and groups. Tool requests and permission decisions will be recorded alongside file server audit events.
 
 Three permission configurations are planned:
 
@@ -28,18 +28,19 @@ Three permission configurations are planned:
 
 ## Current status
 
-The project is at the planning and literature-gathering stage. An initial list of 27 sources has been collected with brief descriptions. Implementation and experimental results are not yet documented in this repository.
+The experiment design and four-VM lab plan are documented, and 27 research references with brief descriptions have been collected for review. The latest recorded lab status is planned. Deployment, pilot runs and experimental results are pending in the project record.
 
 ## Project files
 
 - [Research sources and descriptions](resources/sources/README.md)
+- [Four-VM lab plan](lab-setup.md)
 - [Progress log](progress-log.md)
 
 ## Planned next steps
 
 1. Review the closest related studies and refine the research question.
 2. Select and record the exact model versions and experimental settings.
-3. Build the isolated test environment and fictional company dataset.
+3. Record the VMware product and version, confirm Windows licensing, and build the isolated lab and fictional company dataset.
 4. Implement controlled tools, permission checks, and action logging.
 5. Pilot tasks and define expected outcomes and required permissions.
 6. Run repeated comparisons across models and permission configurations.
