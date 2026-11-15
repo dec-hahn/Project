@@ -1,6 +1,16 @@
 # Four-VM experiment lab
 
-30 October 2026. Status: planned; no machines deployed yet.
+Initial design recorded 30 October 2026. Status updated 15 November 2026.
+
+All four VMs are up and communicating in the Active Directory lab. DC01 hosts the domain, FS01 and AGENT01 are joined to it, and CTRL01 is connected to the lab network.
+
+- **File permissions** — The Finance test account could read its assigned report and was denied access to HR.
+- **Auditing** — The initial file-access auditing options were tested and worked.
+- **OpenAI relay** — AGENT01 sent a request through CTRL01 using an OpenAI API key supplied on CTRL01. The test returned HTTP 200 and `OK`.
+
+The next step is to check access to a second Finance report under the role-based and task-specific configurations, then confirm how file audit events will be collected and matched to trial logs. Comparative trials are pending.
+
+See the [progress log](progress-log.md) for the lab checks.
 
 ## Scope
 
@@ -33,6 +43,8 @@ Host: Windows 11 using VMware (exact product/version to be recorded). Allocation
 
 ## Build sequence and acceptance checks
 
+The steps below describe the original build sequence and what to verify before comparative trials.
+
 1. Select the hypervisor and confirm host OS, licensing and installation media. Record virtual network layout, domain name, IP addresses and DNS configuration before deployment.
 2. Build DC01 and create the isolated domain, departmental groups, administrative identities and experimental identities. Confirm domain DNS and time synchronisation.
 3. Build and domain-join FS01. Create the fictional dataset, departmental shares and permission manifest. Check allowed and denied operations manually using experimental identities.
@@ -45,7 +57,7 @@ Host: Windows 11 using VMware (exact product/version to be recorded). Allocation
 
 - Framework, exact model versions and API credential handling.
 - Task-specific permission provisioning and revocation mechanism.
-- Windows audit forwarding/collection implementation and retention period.
+- Collection and retention of Windows audit events for comparative trials.
 - Task set, expected outputs, permission manifests and repetition counts.
 
 ## Vendor references
