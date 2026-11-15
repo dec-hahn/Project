@@ -1,6 +1,6 @@
 # Four-VM experiment lab
 
-Initial design recorded 30 October 2026. Lab bring-up and initial checks were recorded on 14 November 2026. See the [progress log](progress-log.md) for the successful API and relay checks and the manual Finance and HR access checks. The build sequence below records the planned configuration and remaining acceptance checks.
+30 October 2026. Status: planned; no machines deployed yet.
 
 ## Scope
 

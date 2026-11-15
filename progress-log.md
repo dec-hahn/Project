@@ -1,32 +1,34 @@
-# My project progress
+# Progress Log
 
-## 14 November 2026
+## Status reviewed on 14 November 2026
 
-I checked that AGENT01 could reach CTRL01 over the private lab network. Then I tested a direct OpenAI API call from CTRL01 using `gpt-5-nano`. I got HTTP 200 and the reply `OK`. I also tested the relay from AGENT01 through CTRL01 and got the same response back on AGENT01. I entered the API key on CTRL01 for the test.
+The repository records research planning and lab design. The October milestones below describe the work completed to date. The [lab plan](lab-setup.md) defines the build sequence and pilot acceptance checks. The [source index](resources/sources/README.md) holds 27 references for literature review.
 
-On FS01, I set up the Finance and HR test files, including a fictional payroll file. I signed in with the Finance test account and confirmed I could read the assigned Finance report. I also tried accessing HR with the same account and confirmed access was denied.
+Open decisions include the exact model versions and shared agent framework, the task and permission manifests, repetition counts, and the Windows audit collection method. The next lab milestone is provisioning the isolated network and domain controller after recording the VMware version and confirming licensing. Deployment, pilot runs and experimental results have yet to be recorded.
 
-My next step is to add a second Finance report. I want to check that the Finance account can open both reports and that the task-specific account can only open the assigned one. After that I need to check that the audit logs capture the allowed and denied actions before I run the first comparison.
+## 2 November 2026 — Lab plan updated on GitHub
 
-## 2 November 2026
+- Updated the [four-VM lab plan](lab-setup.md), which records machine roles and sizing, effective SMB and NTFS permissions, audit checks, trial reset procedures and outstanding implementation decisions. See the [repository revision](https://github.com/dec-hahn/Project/commit/c186996ffa06f9a389c12eab3409648163bb224f).
 
-I updated the [lab setup notes](lab-setup.md) with how I plan to set up the file permissions, check the audit logs and reset the lab between runs. I also wrote down the decisions I still need to make, including which agent framework and model versions to use and how many times to repeat each task.
+## 30 October 2026 — Four-VM lab architecture agreed
 
-## 30 October 2026
+- Selected a Windows domain controller, Windows file server, Windows agent workstation and Ubuntu experiment controller/log collector.
+- Replaced the original single-Linux-VM plan with an AD-managed company file environment.
+- Recorded machine sizing, security boundaries, build order and pilot acceptance checks in lab-setup.md.
+- Confirmed Windows 11 as the host operating system and VMware as the virtualisation platform; the exact VMware product/version remains to be recorded.
+- Revised initial allocations for sequential, API-based trials: DC01 and FS01 each receive 2 vCPU and 2 GB RAM; AGENT01 receives 2 vCPU and 4 GB RAM; CTRL01 receives 2 vCPU and 2 GB RAM.
+- Planned virtual disks: DC01 60 GB; FS01 60 GB OS plus 40 GB data; AGENT01 80 GB; CTRL01 60 GB. Total guest allocation: 8 vCPU, 10 GB RAM and 300 GB virtual disk capacity, excluding snapshots and backups.
+- These are lean starting allocations. Pilot runs will check memory pressure, timeouts and logging reliability before resources are fixed across experimental conditions.
+- Deployment has not started. Next: record the VMware version, confirm Windows licensing, then provision the isolated network and DC01.
 
-I settled on a four-VM lab on my Windows 11 host using VMware. I moved on from the original single Linux VM idea because I wanted the lab to work like a company file network managed through Active Directory.
+## 19 October 2026 — Research documentation prepared
 
-| VM | What I plan to use it for | Starting allocation |
-| --- | --- | --- |
-| DC01 | Windows domain controller for users and groups | 2 vCPU, 2 GB RAM, 60 GB disk |
-| FS01 | Windows file server for the fictional department files | 2 vCPU, 2 GB RAM, 60 GB OS disk plus 40 GB data disk |
-| AGENT01 | Windows workstation for running the agents | 2 vCPU, 4 GB RAM, 80 GB disk |
-| CTRL01 | Ubuntu server for coordinating tests and collecting logs | 2 vCPU, 2 GB RAM, 60 GB disk |
+- Recovered the project plan from earlier planning discussions.
+- Documented the proposed comparison of OpenAI-, Claude-, and Gemini-powered agents.
+- Documented broad-access, role-based, and task-specific permission configurations.
+- Prepared an initial list of 27 related research sources with brief descriptions.
+- Prepared a project overview and progress log for sharing with the teacher on GitHub.
 
-I planned for 8 vCPU, 10 GB of guest RAM and 300 GB of virtual disk space in total, before snapshots and backups. I kept the starting allocations low because I plan to run the tests one at a time and use model APIs. I’ll check memory use, timeouts and logging during the pilot. At this point I still needed to record the exact VMware version and confirm Windows licensing.
+Current stage: planning and literature review. No experimental results have been recorded yet.
 
-## 19 October 2026
-
-I pulled together my project idea and wrote out how I want to compare agents using OpenAI, Claude and Gemini. I want to see how they behave with broad file access, access based on their department and access limited to the task they’ve been given.
-
-I collected [27 sources](resources/sources/README.md) and added a short description for each one so I could decide which to read first. I also prepared the project overview and progress log to share on GitHub.
+Next: review priority papers, select exact model versions, and begin the test-environment prototype.

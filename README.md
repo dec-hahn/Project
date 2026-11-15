@@ -28,7 +28,7 @@ Three permission configurations are planned:
 
 ## Current status
 
-Lab bring-up is underway. An OpenAI connectivity check passed directly from CTRL01 and through the relay from AGENT01. Manual file checks confirmed that the Finance role account could read its assigned Finance report and was denied access to HR. The project has collected 27 research references for review. Comparative trials and results are pending.
+The experiment design and four-VM lab plan are documented, and 27 research references with brief descriptions have been collected for review. The latest recorded lab status is planned. Deployment, pilot runs and experimental results are pending in the project record.
 
 ## Project files
 
@@ -40,7 +40,7 @@ Lab bring-up is underway. An OpenAI connectivity check passed directly from CTRL
 
 1. Review the closest related studies and refine the research question.
 2. Select and record the exact model versions and experimental settings.
-3. Complete the lab build record and fictional company dataset. Verify the Finance role and task-specific access against two Finance reports.
+3. Record the VMware product and version, confirm Windows licensing, and build the isolated lab and fictional company dataset.
 4. Implement controlled tools, permission checks, and action logging.
 5. Pilot tasks and define expected outcomes and required permissions.
 6. Run repeated comparisons across models and permission configurations.
